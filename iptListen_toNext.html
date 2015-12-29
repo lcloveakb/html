@@ -1,0 +1,31 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>文本框监听字符数</title>
+</head>
+<body>
+	<input type="text" class="ipt"><br><br><br>
+	<input type="text" class="ipt"><br><br><br>
+	<input type="text" class="ipt"><br><br><br>
+	<input type="text" class="ipt"><br><br><br>
+	<input type="text" class="ipt" maxlength=4><br><br><br>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+var iptSize=0;
+
+$(function(){
+	$(".ipt").focus(function(){	//文本框获取焦点
+		iptSize=0;
+		var this_ = $(this);
+			document.onkeydown = function(e){   //键盘监听
+				if(iptSize==4){	//到达规定字符数触发
+					this_.nextAll(".ipt").eq(0).focus();
+				}
+				iptSize++;
+			}
+	});	
+});
+</script>
+</body>
+</html>
