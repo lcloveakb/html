@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<script type="text/javascript" src='jquery.min.js'></script>
+<script type="text/javascript">
+$(function(){
+
+	///////////////         方法1  如数据量多不推荐          /////////////////
+//	var url =  decodeURI(document.URL);   //截取整条路径 并解码
+//	console.log(url);         //控制台打印 可追踪
+//	var parameter;            //接受参数变量
+//	if(url!=""){
+//		var index = url.indexOf('?');  //?的索引
+// 		parameter = url.substr(index+1);  //?后一位开始截取 直到结束
+//	}
+//	console.log(parameter);
+//	$("#show").html(parameter);
+	///////////////////////////////////////////////////////////////////////////
+
+
+
+	///////////////////            方法2   涉及"域" 必须部署到服务器测试              ////////////////////////
+	var winA= window.opener;    //父页面的引用
+	var winB;
+	alert("======"+winA);
+	if(winA!=null){
+		winB=winA.document.getElementById("longText").value;      //把父页面里 id为longText元素的值 赋值给winB
+		console.log("snalsdaj===="+winB);
+		alert(winB);
+	}
+
+});
+</script>
+
+
+
+<textarea id='show'></textarea>
+
+</body>
+</html>

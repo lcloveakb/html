@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>window.open_test</title>
+<meta charset="UTF-8">
+</head>
+<body>
+
+<button id='btn1'>方法1：地址栏传值)</button>
+<br>
+<button id='btn2'>方法2：子父页面js交互</button>
+<textarea id='longText'></textarea>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+var data='somedmskfnkdjh和雕塑和动力科技舍不得离开家fkhbsdkhbdata';
+	function fn1(){    //子页面解析函数也是相同名称
+		//优点:较快  缺点:  1.数据暴露与地址栏  2.需要中文转码解码
+		console.log('in fn1');
+		data= encodeURI(data);  //转码
+		window.open('sub.html?data='+data);
+	}
+
+	function fn2(){  //子页面解析函数也是相同名称
+		console.log('in fn2');
+		document.getElementById('longText').value=data;
+		window.open('sub.html');
+	}
+
+	$(function(){
+		$("#btn1").unbind("click");
+		$('#btn1').bind("click",function(){
+			fn1();
+		});
+
+		$("#btn2").unbind("click");
+		$('#btn2').bind("click",function(){
+			fn2();
+		});
+	});
+</script>
+</body>
+</html>
